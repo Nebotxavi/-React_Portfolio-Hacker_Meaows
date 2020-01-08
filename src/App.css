@@ -1,9 +1,13 @@
+:root {
+  --primary-color: rgb(255, 100, 0);
+}
+
 .App {
   text-align: center;
 }
 
 .topnav {
-  background-color: rgb(255, 102, 0);
+  background-color: var(--primary-color);
   overflow: hidden;
 }
 

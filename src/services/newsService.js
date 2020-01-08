@@ -10,7 +10,3 @@ export async function getNews(searchBy, page) {
   const { data: newsData } = await http.get(endpoint + page);
   return newsData;
 }
-
-// per date https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=30&page=2
-
-// per points https://hn.algolia.com/api/v1/search?&hitsPerPage=30&page=0

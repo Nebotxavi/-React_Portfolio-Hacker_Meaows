@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from "react";
 
 import { getNews } from "../services/newsService";
+import NewsItem from "./newsItem";
+import Pagination from "./common/pagination";
 
 const News = () => {
   const [news, setNews] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [pagesAmount, setPagesAmount] = useState(0);
   const [searchBy, setSearchBy] = useState("date");
-  const [page, setPage] = useState(0);
-  const [pageAmount, setPageAmount] = useState(0);
+
+  const [query, setQuery] = useState("");
+  const [newsPerPage, setNewsPerPage] = useState(30);
 
   useEffect(() => {
     let shouldIgnore = false;
     async function fetchData() {
       try {
-        const newsData = await getNews(searchBy, page);
+        const newsData = await getNews(searchBy, currentPage);
         if (!shouldIgnore) {
           setNews([...newsData.hits]);
-          setPageAmount(newsData.nbPages - 1);
+          setPagesAmount(newsData.nbPages);
         }
       } catch (ex) {
         console.log("News error: ", ex);
@@ -23,11 +28,27 @@ const News = () => {
     }
     fetchData();
     return () => (shouldIgnore = true);
-  }, [page, searchBy]);
+  }, [currentPage, searchBy]);
 
-  console.log(news, pageAmount);
+  console.log(
+    "news: ",
+    news,
+    "pagesAmount: ",
+    pagesAmount,
+    "currentPage: ",
+    currentPage
+  );
 
-  return <h1>news</h1>;
+  return (
+    <React.Fragment>
+      <NewsItem news={news} />
+      <Pagination
+        currentPage={currentPage}
+        pagesAmount={pagesAmount}
+        setCurrentPage={setCurrentPage}
+      />
+    </React.Fragment>
+  );
 };
 
 export default News;

@@ -1,30 +1,74 @@
 :root {
-  --primary-color: rgb(255, 100, 0);
+  --primary-color: #ff7416;
+  --secondary-color: rgb(0, 0, 0);
 }
 
 .App {
   text-align: center;
 }
 
+/* NAVBAR */
+
 .topnav {
   background-color: var(--primary-color);
-  overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
-.topnav .navlink {
-  float: left;
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
+.topnav .navItem {
+  margin: auto 0;
+  font-size: 0.6rem;
+}
+
+/* LINKS */
+
+.topnav a {
   text-decoration: none;
-  font-size: 14px;
+  color: var(--secondary-color);
 }
 
-.topnav .navlink.homeLink {
-  font-weight: bold;
+.topnav h1 {
+  font-weight: normal;
 }
 
-.topnav .navlink.active {
-  color: white;
+/* LOGO */
+
+.topnav .logo {
+  display: flex;
+  height: 3rem;
+}
+
+.topnav .logo h1 {
+  line-height: 0.2em;
+  text-align: left;
+}
+
+.topnav .logo img {
+  height: 100%;
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+/* SEARCH BAR */
+
+.topnav .searchBar {
+  flex-grow: 2;
+}
+
+.topnav .inputBar {
+  width: 95%;
+}
+
+/* SETTINGS */
+
+.topnav .settingsLink {
+  display: flex;
+}
+
+.topnav h1 {
+  margin-right: 0.4rem;
+}
+
+.topnav svg {
+  margin: auto 0.7rem;
 }

@@ -1,35 +1,19 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+import Logo from "./logo";
+import SearchBar from "./common/searchBar";
+import SettingsLink from "./settingsLink";
+
 const NavBar = () => {
   return (
     <div className="topnav" id="myTopnav">
-      <NavLink className="navlink homeLink" to="news">
-        Hacker News
+      <NavLink to="news">
+        <Logo />
       </NavLink>
-      <NavLink className="navlink" to="2">
-        new
-      </NavLink>
-      <NavLink className="navlink" to="3">
-        threads
-      </NavLink>
-      <NavLink className="navlink" to="4">
-        past
-      </NavLink>
-      <NavLink className="navlink" to="5">
-        comments
-      </NavLink>
-      <NavLink className="navlink" to="6">
-        ask
-      </NavLink>
-      <NavLink className="navlink" to="7">
-        show
-      </NavLink>
-      <NavLink className="navlink" to="8">
-        jobs
-      </NavLink>
-      <NavLink className="navlink" to="9">
-        submit
+      <SearchBar />
+      <NavLink to="settings">
+        <SettingsLink />
       </NavLink>
     </div>
   );

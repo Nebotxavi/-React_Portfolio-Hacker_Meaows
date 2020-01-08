@@ -1,38 +1,31 @@
 import React, { useState, useEffect } from "react";
 
-import { getTopStories, getTopStoriesID } from "../services/newsService";
+import { getNews } from "../services/newsService";
 
 const News = () => {
-  const [newsID, setNewsID] = useState([]);
   const [news, setNews] = useState([]);
+  const [searchBy, setSearchBy] = useState("date");
+  const [page, setPage] = useState(0);
+  const [pageAmount, setPageAmount] = useState(0);
 
   useEffect(() => {
     let shouldIgnore = false;
     async function fetchData() {
       try {
-        const newsID = await getTopStoriesID();
-        if (!shouldIgnore) setNewsID([...newsID]);
+        const newsData = await getNews(searchBy, page);
+        if (!shouldIgnore) {
+          setNews([...newsData.hits]);
+          setPageAmount(newsData.nbPages - 1);
+        }
       } catch (ex) {
         console.log("News error: ", ex);
       }
     }
     fetchData();
     return () => (shouldIgnore = true);
-  }, []);
+  }, [page, searchBy]);
 
-  useEffect(() => {
-    let shouldIgnore = false;
-    async function fetchData() {
-      try {
-        const news = await getTopStories();
-        if (!shouldIgnore) setNews([...news]);
-      } catch (ex) {
-        console.log("News error: ", ex);
-      }
-    }
-    fetchData();
-    return () => (shouldIgnore = true);
-  }, [newsID]);
+  console.log(news, pageAmount);
 
   return <h1>news</h1>;
 };

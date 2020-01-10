@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 
 import Filters from "./filters";
-import { getNews } from "../services/newsService";
-import NewsItem from "./newsItem";
+import { getContent } from "../services/contentService";
+import ContentItem from "./contentItem";
 import Pagination from "./common/pagination";
 
-const News = () => {
-  const [news, setNews] = useState([]);
+const Content = () => {
+  const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [pagesAmount, setPagesAmount] = useState(0);
 
@@ -15,26 +15,32 @@ const News = () => {
   const [searchForTime, setSearchForTime] = useState("All time");
 
   // const [query, setQuery] = useState("");
-  // const [newsPerPage, setNewsPerPage] = useState(30);
+  const [itemsPerPage, setItemsPerPage] = useState(30);
 
-  console.log("By", searchBy, "Type", searchType, "forTime", searchForTime);
+  // console.log("By", searchBy, "Type", searchType, "forTime", searchForTime);
 
   useEffect(() => {
     let shouldIgnore = false;
     async function fetchData() {
       try {
-        const newsData = await getNews(searchBy, currentPage);
+        const contentData = await getContent(
+          searchBy,
+          searchType,
+          searchForTime,
+          currentPage,
+          itemsPerPage
+        );
         if (!shouldIgnore) {
-          setNews([...newsData.hits]);
-          setPagesAmount(newsData.nbPages);
+          setItems([...contentData.hits]);
+          setPagesAmount(contentData.nbPages);
         }
       } catch (ex) {
-        console.log("News error: ", ex);
+        console.log("Fetching items error: ", ex);
       }
     }
     fetchData();
     return () => (shouldIgnore = true);
-  }, [currentPage, searchBy]);
+  }, [currentPage, searchBy, searchType, itemsPerPage, searchForTime]);
 
   return (
     <React.Fragment>
@@ -46,7 +52,7 @@ const News = () => {
         searchForTime={searchForTime}
         setSearchForTime={setSearchForTime}
       />
-      <NewsItem news={news} />
+      <ContentItem items={items} />
       <Pagination
         currentPage={currentPage}
         pagesAmount={pagesAmount}
@@ -56,4 +62,4 @@ const News = () => {
   );
 };
 
-export default News;
+export default Content;

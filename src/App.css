@@ -7,6 +7,12 @@
   text-align: center;
 }
 
+/* General */
+
+small {
+  color: grey;
+}
+
 /* NAVBAR */
 
 .topnav {
@@ -71,4 +77,10 @@
 
 .topnav svg {
   margin: auto 0.7rem;
+}
+
+/* --- BODY --- */
+
+.itemsList .content-item {
+  border-bottom: 1px solid black;
 }

@@ -7,8 +7,8 @@ const Pagination = ({ pagesAmount, currentPage, setCurrentPage }) => {
   const pages = _.range(currentPageRef - 5, currentPageRef + 5 + 1);
 
   return (
-    <nav aria-label="Page navigation example">
-      <ul className="pagination clickable">
+    <nav aria-label="pagination">
+      <ul className="clickable">
         {pages.map(page => {
           const style = page === currentPage ? "page-item active" : "page-item";
           return page > 0 && page <= pagesAmount ? (

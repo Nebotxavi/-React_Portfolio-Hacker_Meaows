@@ -36,11 +36,11 @@ const Filters = ({
   };
 
   return (
-    <React.Fragment>
+    <div className="filters">
       <Select inputs={[inputs.searchInput]} setItem={setSearchType} />
       <Select inputs={[inputs.byInput]} setItem={setSearchBy} />
       <Select inputs={[inputs.forInput]} setItem={setSearchForTime} />
-    </React.Fragment>
+    </div>
   );
 };
 

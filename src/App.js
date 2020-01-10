@@ -3,14 +3,14 @@ import "./App.css";
 import { Route, Switch } from "react-router-dom";
 
 import NavBar from "./components/navBar";
-import News from "./components/news";
+import Content from "./components/content";
 
 function App() {
   return (
     <div className="App">
       <NavBar />
       <Switch>
-        <Route path="/news" component={News} />
+        <Route path="/" component={Content} />
       </Switch>
     </div>
   );

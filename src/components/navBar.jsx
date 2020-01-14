@@ -8,7 +8,7 @@ import SettingsLink from "./settingsLink";
 const NavBar = () => {
   return (
     <div className="topnav" id="myTopnav">
-      <NavLink to="news">
+      <NavLink to="/">
         <Logo />
       </NavLink>
       <SearchBar />

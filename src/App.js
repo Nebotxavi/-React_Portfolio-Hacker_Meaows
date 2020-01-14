@@ -1,17 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
 
 import NavBar from "./components/navBar";
 import Content from "./components/content";
 
+export const UserContext = React.createContext();
+
 function App() {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [query, setQuery] = useState("");
+
   return (
     <div className="App">
-      <NavBar />
-      <Switch>
-        <Route path="/" component={Content} />
-      </Switch>
+      <UserContext.Provider
+        value={{
+          query,
+          setQuery,
+          currentPage,
+          setCurrentPage
+        }}
+      >
+        <NavBar />
+        <Switch>
+          <Route path="/" component={Content} />
+        </Switch>
+      </UserContext.Provider>
     </div>
   );
 }

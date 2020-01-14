@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 
-const SearchBar = ({ query, setQuery, setCurrentGenre, setCurrentPage }) => {
+import { UserContext } from "../../App";
+
+const SearchBar = () => {
+  const { query, setQuery, setCurrentPage } = useContext(UserContext);
+
   return (
     <div className="navItem searchBar">
       <input
@@ -8,8 +12,7 @@ const SearchBar = ({ query, setQuery, setCurrentGenre, setCurrentPage }) => {
         placeholder="Search here..."
         value={query}
         onChange={e => {
-          setCurrentGenre("");
-          setCurrentPage(1);
+          setCurrentPage(0);
           setQuery(e.target.value.toLowerCase());
         }}
       />

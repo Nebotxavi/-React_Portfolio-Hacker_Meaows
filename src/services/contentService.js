@@ -1,8 +1,8 @@
 import http from "./httpService";
 import { getTimestamp } from "../utils/getTimestamp";
 
-const searchByDateEndpoint = "search_by_date?"; // "tags=story&hitsPerPage=30&page=";
-const searchByPopEndpoint = "search?"; // "tags=story&hitsPerPage=30&page=";
+const searchByDateEndpoint = "search_by_date?";
+const searchByPopEndpoint = "search?";
 
 const searchStoriesEndpoint = "tags=story";
 const searchCommentsEndpoint = "tags=comment";
@@ -13,12 +13,15 @@ const pageEndpoint = "&page=";
 
 const timeEndpoint = "&numericFilters=created_at_i>";
 
+const queryEndpoint = "&query=";
+
 export async function getContent(
   searchBy,
   searchType,
   searchForTime,
   page,
-  newsPerPage
+  newsPerPage,
+  query
 ) {
   let endpoint = "";
   endpoint += searchBy === "Date" ? searchByDateEndpoint : searchByPopEndpoint;
@@ -34,6 +37,8 @@ export async function getContent(
     searchForTime === "All time"
       ? ""
       : timeEndpoint + getTimestamp(searchForTime);
+
+  endpoint += query ? queryEndpoint + query : "";
 
   console.log("endpoint", endpoint);
 

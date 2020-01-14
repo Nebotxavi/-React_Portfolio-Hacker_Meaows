@@ -1,23 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import Filters from "./filters";
 import { getContent } from "../services/contentService";
 import ContentItem from "./contentItem";
 import Pagination from "./common/pagination";
 
+import { UserContext } from "../App";
+
 const Content = () => {
   const [items, setItems] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
   const [pagesAmount, setPagesAmount] = useState(0);
-
   const [searchBy, setSearchBy] = useState("Date");
   const [searchType, setSearchType] = useState("Stories");
   const [searchForTime, setSearchForTime] = useState("All time");
-
-  // const [query, setQuery] = useState("");
   const [itemsPerPage, setItemsPerPage] = useState(30);
 
-  // console.log("By", searchBy, "Type", searchType, "forTime", searchForTime);
+  const { currentPage, setCurrentPage, query } = useContext(UserContext);
 
   useEffect(() => {
     let shouldIgnore = false;
@@ -28,7 +26,8 @@ const Content = () => {
           searchType,
           searchForTime,
           currentPage,
-          itemsPerPage
+          itemsPerPage,
+          query
         );
         if (!shouldIgnore) {
           setItems([...contentData.hits]);
@@ -40,7 +39,7 @@ const Content = () => {
     }
     fetchData();
     return () => (shouldIgnore = true);
-  }, [currentPage, searchBy, searchType, itemsPerPage, searchForTime]);
+  }, [currentPage, searchBy, searchType, itemsPerPage, searchForTime, query]);
 
   return (
     <React.Fragment>

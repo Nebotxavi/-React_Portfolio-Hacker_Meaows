@@ -1,10 +1,10 @@
 import React from "react";
+import { getTimeAgo } from "../utils/getTimestamp";
 
 const ContentItem = ({ items }) => {
   return (
     <div className="itemsList">
       {items.map(item => {
-        console.log("items", item);
         if (item._tags[0] === "story")
           return (
             <div className="content-item" key={item.objectID}>
@@ -14,8 +14,9 @@ const ContentItem = ({ items }) => {
               </p>
               <p>
                 <small>
-                  {item.points} | {item.author} | x time ago |{" "}
-                  {item.num_comments}
+                  {item.points} | {item.author} |{" "}
+                  {getTimeAgo(item.created_at_i)} |
+                  {` ${item.num_comments} comments`}
                 </small>
               </p>
             </div>
@@ -26,7 +27,8 @@ const ContentItem = ({ items }) => {
               <p>
                 <small>
                   {item.points && item.points + " | "}
-                  {item.author} | x time ago | parent |{" " + item.story_title}
+                  {item.author} | {getTimeAgo(item.created_at_i)} | parent |
+                  {" " + item.story_title}
                 </small>
               </p>
               <p>{item.comment_text}</p>

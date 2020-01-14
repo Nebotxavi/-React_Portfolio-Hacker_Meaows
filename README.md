@@ -9,3 +9,5 @@ Main freatures:
 - API fetching based on filtering and querying
 - Exploring React Hooks
 - CSS
+
+Live version under construction!

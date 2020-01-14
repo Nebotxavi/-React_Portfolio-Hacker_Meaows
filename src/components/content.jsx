@@ -9,11 +9,11 @@ import { UserContext } from "../App";
 
 const Content = () => {
   const [items, setItems] = useState([]);
+  const [itemsPerPage, setItemsPerPage] = useState(30);
   const [pagesAmount, setPagesAmount] = useState(0);
   const [searchBy, setSearchBy] = useState("Date");
   const [searchType, setSearchType] = useState("Stories");
   const [searchForTime, setSearchForTime] = useState("All time");
-  const [itemsPerPage, setItemsPerPage] = useState(30);
 
   const { currentPage, setCurrentPage, query } = useContext(UserContext);
 

@@ -61,8 +61,17 @@ small {
   flex-grow: 2;
 }
 
+.searchIcon {
+  position: absolute;
+  color: var(--primary-color);
+  margin-top: 10px;
+}
+
 .topnav .inputBar {
-  width: 95%;
+  width: 90%;
+  border-radius: 0;
+  border: none;
+  padding: 0.8rem 0.8rem 0.8rem 3rem;
 }
 
 /* SETTINGS */

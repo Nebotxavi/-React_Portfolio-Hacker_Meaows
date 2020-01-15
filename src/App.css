@@ -1,16 +1,23 @@
 :root {
   --primary-color: #ff7416;
   --secondary-color: rgb(0, 0, 0);
+  --background-color: #f6f6ef;
+  --grey-borders-color: rgb(192, 191, 191);
 }
 
 .App {
   text-align: center;
+  background-color: var(--background-color);
 }
 
 /* General */
 
 small {
   color: grey;
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 /* NAVBAR */
@@ -90,6 +97,87 @@ small {
 
 /* --- BODY --- */
 
+/* FILTERS */
+
+.filters {
+  display: flex;
+  flex-direction: row;
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+}
+
+.selectLabel {
+  margin-right: 7px;
+}
+
+.selectBox {
+  border-style: solid;
+  border-width: thin;
+  border-color: var(--grey-borders-color);
+}
+
+.select-input {
+  -webkit-appearance: none;
+  border: none;
+  width: 38%;
+  color: grey;
+}
+
+.select-group-form {
+  text-align: left;
+  align-items: flex-start;
+  margin-right: -10px;
+}
+
+div.select-group-form > span > svg {
+  color: grey;
+  padding-right: 10px;
+}
+
+/* MAIN CONTENT */
+
+.itemsList {
+  font-size: 0.9rem;
+  text-align: left;
+  margin-left: 2rem;
+}
+
 .itemsList .content-item {
-  border-bottom: 1px solid black;
+  margin-top: 0.5rem;
+}
+
+.itemsList .content-item p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* PAGINATION */
+
+.paginationList {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.paginationList li {
+  margin-right: 5px;
+}
+
+.page-item .page-link {
+  cursor: pointer;
+  border-radius: 0;
+  border-style: solid;
+  border-width: thin;
+  border-color: var(--grey-borders-color);
+}
+
+.page-item.active > button {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+li.page-item > button {
+  border: none;
+  color: var(--grey-borders-color);
 }

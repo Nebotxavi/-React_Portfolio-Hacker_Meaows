@@ -8,9 +8,10 @@ const Pagination = ({ pagesAmount, currentPage, setCurrentPage }) => {
 
   return (
     <nav aria-label="pagination">
-      <ul className="clickable">
+      <ul className="paginationList">
         {pages.map(page => {
-          const style = page === currentPage ? "page-item active" : "page-item";
+          const style =
+            page === currentPageRef ? "page-item active" : "page-item";
           return page > 0 && page <= pagesAmount ? (
             <li className={style} key={page}>
               <button

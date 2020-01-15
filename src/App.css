@@ -121,6 +121,7 @@ small {
   border: none;
   width: 38%;
   color: grey;
+  cursor: pointer;
 }
 
 .select-group-form {

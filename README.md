@@ -10,4 +10,6 @@ Main freatures:
 - Exploring React Hooks
 - CSS
 
-Live version under construction!
+DRAFT deployed version: https://shielded-castle-01457.herokuapp.com/ 
+
+It will take some time to load the first time due to server limitations.

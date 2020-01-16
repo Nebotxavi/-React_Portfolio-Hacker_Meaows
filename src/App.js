@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
 
+import FootBar from "./components/footBar";
 import NavBar from "./components/navBar";
 import Content from "./components/content";
 
@@ -25,6 +26,7 @@ function App() {
         <Switch>
           <Route path="/" component={Content} />
         </Switch>
+        <FootBar />
       </UserContext.Provider>
     </div>
   );

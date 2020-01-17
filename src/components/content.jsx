@@ -5,17 +5,16 @@ import { getContent } from "../services/contentService";
 import ContentItem from "./contentItem";
 import Pagination from "./common/pagination";
 
-import { UserContext } from "../App";
+import { UserContext, SettingsContext } from "../App";
 
 const Content = () => {
   const [items, setItems] = useState([]);
-  const [itemsPerPage, setItemsPerPage] = useState(30);
   const [pagesAmount, setPagesAmount] = useState(0);
-  const [searchBy, setSearchBy] = useState("Date");
-  const [searchType, setSearchType] = useState("Stories");
-  const [searchForTime, setSearchForTime] = useState("All time");
 
-  const { currentPage, setCurrentPage, query } = useContext(UserContext);
+  const { currentPage, query } = useContext(UserContext);
+  const { itemsPerPage, searchBy, searchType, searchForTime } = useContext(
+    SettingsContext
+  );
 
   useEffect(() => {
     let shouldIgnore = false;
@@ -43,20 +42,9 @@ const Content = () => {
 
   return (
     <React.Fragment>
-      <Filters
-        searchBy={searchBy}
-        setSearchBy={setSearchBy}
-        searchType={searchType}
-        setSearchType={setSearchType}
-        searchForTime={searchForTime}
-        setSearchForTime={setSearchForTime}
-      />
+      <Filters />
       <ContentItem items={items} />
-      <Pagination
-        currentPage={currentPage}
-        pagesAmount={pagesAmount}
-        setCurrentPage={setCurrentPage}
-      />
+      <Pagination pagesAmount={pagesAmount} />
     </React.Fragment>
   );
 };

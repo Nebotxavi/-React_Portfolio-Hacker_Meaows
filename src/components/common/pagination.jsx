@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import _ from "lodash";
 
-const Pagination = ({ pagesAmount, currentPage, setCurrentPage }) => {
+import { UserContext } from "../../App";
+
+const Pagination = ({ pagesAmount }) => {
+  const { currentPage, setCurrentPage } = useContext(UserContext);
+
   if (pagesAmount <= 1) return null;
   const currentPageRef = currentPage + 1;
   const pages = _.range(currentPageRef - 5, currentPageRef + 5 + 1);

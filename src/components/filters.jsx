@@ -1,27 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import Select from "./common/select";
 
-const Filters = ({
-  searchBy,
-  setSearchBy,
-  searchType,
-  setSearchType,
-  searchForTime,
-  setSearchForTime
-}) => {
-  const inputs = {
-    searchInput: {
+import { SettingsContext } from "../App";
+
+const Filters = () => {
+  const {
+    searchBy,
+    setSearchBy,
+    searchType,
+    setSearchType,
+    searchForTime,
+    setSearchForTime
+  } = useContext(SettingsContext);
+
+  const inputs = [
+    {
       name: "Search",
       value: searchType,
-      options: ["All", "Stories", "Comments"]
+      options: ["All", "Stories", "Comments"],
+      onChangeAction: target => setSearchType(target.value)
     },
-    byInput: {
+    {
       name: "by",
       value: searchBy,
-      options: ["Date", "Popularity"]
+      options: ["Date", "Popularity"],
+      onChangeAction: target => setSearchBy(target.value)
     },
-    forInput: {
+    {
       name: "for",
       value: searchForTime,
       options: [
@@ -31,15 +37,19 @@ const Filters = ({
         "Past Month",
         "Past Year",
         "Custom range"
-      ]
+      ],
+      onChangeAction: target => setSearchForTime(target.value)
     }
-  };
+  ];
 
   return (
     <div className="filters">
-      <Select inputs={[inputs.searchInput]} setItem={setSearchType} />
-      <Select inputs={[inputs.byInput]} setItem={setSearchBy} />
-      <Select inputs={[inputs.forInput]} setItem={setSearchForTime} />
+      {inputs.map((input, ind) => (
+        <Select inputs={input} requireSvg={true} key={ind} />
+      ))}
+      {/* <Select inputs={[inputs.searchInput]} />
+      <Select inputs={[inputs.byInput]} />
+      <Select inputs={[inputs.forInput]} /> */}
     </div>
   );
 };

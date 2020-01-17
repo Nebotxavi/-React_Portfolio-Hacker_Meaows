@@ -106,17 +106,17 @@ small {
   padding-top: 0.5rem;
 }
 
-.selectLabel {
+.filters .selectLabel {
   margin-right: 7px;
 }
 
-.selectBox {
+.filters .selectBox {
   border-style: solid;
   border-width: thin;
   border-color: var(--grey-borders-color);
 }
 
-.select-input {
+.filters .select-input {
   -webkit-appearance: none;
   border: none;
   width: 38%;
@@ -124,7 +124,7 @@ small {
   cursor: pointer;
 }
 
-.select-group-form {
+.filters .select-group-form {
   text-align: left;
   align-items: flex-start;
   margin-right: -10px;
@@ -205,4 +205,40 @@ li.page-item > button {
 
 .footBar-list li:first-child {
   list-style-type: none;
+}
+
+/* SETTINGS */
+
+.settings p {
+  text-align: left;
+  margin-left: 1rem;
+  font-size: 0.8rem;
+}
+
+.settings h2 {
+  font-weight: normal;
+  font-size: 1rem;
+  color: var(--grey-borders-color);
+  text-align: left;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border-bottom: 1px solid var(--grey-borders-color);
+}
+
+.settings .ranking-settings {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.settings .select-group-form {
+  display: flex;
+  justify-content: center;
+}
+
+.settings .selectLabel {
+  margin-right: 10px;
+}
+
+.settings .select-box {
 }

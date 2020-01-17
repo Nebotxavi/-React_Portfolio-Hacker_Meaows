@@ -6,8 +6,9 @@ Front end app that clones the popular site Hacker News.
 
 Main freatures:
 
+- LocalStorage and settings based on personalized options
 - API fetching based on filtering and querying
-- Exploring React Hooks
+- useContext Hook
 - CSS
 
 DRAFT deployed version: <a href="https://shielded-castle-01457.herokuapp.com/" target="_blank">https://shielded-castle-01457.herokuapp.com/</a> 

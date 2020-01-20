@@ -152,6 +152,16 @@ div.select-group-form > span > svg {
   margin-bottom: 0;
 }
 
+.itemsList .content-item p > a {
+  text-decoration: none;
+  color: black;
+}
+
+.itemsList a {
+  text-decoration: none;
+  color: grey;
+}
+
 /* PAGINATION */
 
 .paginationList {

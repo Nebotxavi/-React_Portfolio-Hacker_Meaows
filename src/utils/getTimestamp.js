@@ -44,9 +44,11 @@ export function getTimeAgo(timeStamp) {
       ? Math.floor(diffTime / hour) +
         " hour" +
         (Math.floor(diffTime / hour) > 1 ? "s" : "")
-      : Math.floor(diffTime / minute) +
+      : diffTime > minute
+      ? Math.floor(diffTime / minute) +
         " minute" +
-        (Math.floor(diffTime / minute) > 1 ? "s" : "");
+        (Math.floor(diffTime / minute) > 1 ? "s" : "")
+      : "1 minute";
 
   return ago + " ago";
 }

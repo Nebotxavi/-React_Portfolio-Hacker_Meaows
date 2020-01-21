@@ -9,10 +9,18 @@ const Pagination = ({ pagesAmount }) => {
   if (pagesAmount <= 1) return null;
   const currentPageRef = currentPage + 1;
   const pages = _.range(currentPageRef - 5, currentPageRef + 5 + 1);
+  console.log("pages", pagesAmount);
 
   return (
     <nav aria-label="pagination">
       <ul className="paginationList">
+        {pages[5] !== 1 && (
+          <li className="page-item" key="initial">
+            <button className="page-link" onClick={() => setCurrentPage(0)}>
+              &lt;
+            </button>
+          </li>
+        )}
         {pages.map(page => {
           const style =
             page === currentPageRef ? "page-item active" : "page-item";
@@ -27,6 +35,16 @@ const Pagination = ({ pagesAmount }) => {
             </li>
           ) : null;
         })}
+        {!pages.includes(pagesAmount) && (
+          <li className="page-item" key="initial">
+            <button
+              className="page-link"
+              onClick={() => setCurrentPage(pagesAmount - 1)}
+            >
+              &gt;
+            </button>
+          </li>
+        )}
       </ul>
     </nav>
   );

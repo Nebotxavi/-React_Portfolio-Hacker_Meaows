@@ -1,5 +1,5 @@
 import http from "./httpService";
-import { getTimestamp } from "../utils/getTimestamp";
+import { getTimestamp } from "../utils/timeFunctions";
 
 const searchByDateEndpoint = "search_by_date?";
 const searchByPopEndpoint = "search?";
@@ -38,7 +38,7 @@ export async function getContent(
       ? ""
       : timeEndpoint + getTimestamp(searchForTime);
 
-  endpoint += query ? queryEndpoint + query : "";
+  endpoint += query ? queryEndpoint + query.toLowerCase() : "";
 
   console.log("endpoint", endpoint);
 

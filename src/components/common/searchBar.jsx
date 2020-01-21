@@ -29,7 +29,7 @@ const SearchBar = () => {
         value={query}
         onChange={e => {
           setCurrentPage(0);
-          setQuery(e.target.value.toLowerCase());
+          setQuery(e.target.value);
         }}
       />
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { getTimeAgo } from "../utils/getTimestamp";
+import { getTimeAgo } from "../utils/timeFunctions";
 
 const linkEndpoint = "https://news.ycombinator.com/";
 const itemEndpoint = linkEndpoint + "item?id=";

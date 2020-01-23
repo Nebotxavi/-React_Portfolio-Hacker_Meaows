@@ -1,12 +1,15 @@
 import React from "react";
 
 import { getTimeAgo } from "../utils/timeFunctions";
+import { htmlDecode } from "../utils/decoder";
 
 const linkEndpoint = "https://news.ycombinator.com/";
 const itemEndpoint = linkEndpoint + "item?id=";
 
 const ContentItem = ({ items }) => {
   console.log(items);
+  // Above this, to be removed
+
   return (
     <div className="itemsList">
       {items.map(item => {
@@ -49,7 +52,12 @@ const ContentItem = ({ items }) => {
                   <a href={threadLink}>{item.story_title}</a>
                 </small>
               </p>
-              <p>{item.comment_text}</p>
+              {/* <p>{htmlDecode(item.comment_text)}</p> */}
+              <div>
+                {htmlDecode(item.comment_text).map((paragraph, ind) => (
+                  <p key={"p_" + ind}>{paragraph}</p>
+                ))}
+              </div>
             </div>
           );
       })}

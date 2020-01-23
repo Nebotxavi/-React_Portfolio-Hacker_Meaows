@@ -36,7 +36,7 @@ const Pagination = ({ pagesAmount }) => {
           ) : null;
         })}
         {!pages.includes(pagesAmount) && (
-          <li className="page-item" key="initial">
+          <li className="page-item" key="final">
             <button
               className="page-link"
               onClick={() => setCurrentPage(pagesAmount - 1)}

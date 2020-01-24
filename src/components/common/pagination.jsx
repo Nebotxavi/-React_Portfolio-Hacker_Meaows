@@ -9,14 +9,18 @@ const Pagination = ({ pagesAmount }) => {
   if (pagesAmount <= 1) return null;
   const currentPageRef = currentPage + 1;
   const pages = _.range(currentPageRef - 5, currentPageRef + 5 + 1);
-  console.log("pages", pagesAmount);
+
+  const handleClick = page => {
+    setCurrentPage(page);
+    window.scrollTo(0, 0);
+  };
 
   return (
     <nav aria-label="pagination">
       <ul className="paginationList">
         {pages[5] !== 1 && (
           <li className="page-item" key="initial">
-            <button className="page-link" onClick={() => setCurrentPage(0)}>
+            <button className="page-link" onClick={() => handleClick(0)}>
               &lt;
             </button>
           </li>
@@ -28,7 +32,7 @@ const Pagination = ({ pagesAmount }) => {
             <li className={style} key={page}>
               <button
                 className="page-link"
-                onClick={() => setCurrentPage(page - 1)}
+                onClick={() => handleClick(page - 1)}
               >
                 {page}
               </button>
@@ -39,7 +43,7 @@ const Pagination = ({ pagesAmount }) => {
           <li className="page-item" key="final">
             <button
               className="page-link"
-              onClick={() => setCurrentPage(pagesAmount - 1)}
+              onClick={() => handleClick(pagesAmount - 1)}
             >
               &gt;
             </button>

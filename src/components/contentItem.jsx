@@ -8,8 +8,6 @@ const itemEndpoint = linkEndpoint + "item?id=";
 
 const ContentItem = ({ items }) => {
   console.log(items);
-  // Above this, to be removed
-
   return (
     <div className="itemsList">
       {items.map(item => {
@@ -35,6 +33,15 @@ const ContentItem = ({ items }) => {
                   <a href={contentLink}>{` ${item.num_comments} comments`}</a>
                 </small>
               </p>
+              {item.story_text && (
+                <div className="content-story-text">
+                  {htmlDecode(item.story_text).map((paragraph, ind) => (
+                    <p key={"storyP_" + ind}>
+                      <small>{paragraph}</small>
+                    </p>
+                  ))}
+                </div>
+              )}
             </div>
           );
         else
@@ -52,10 +59,9 @@ const ContentItem = ({ items }) => {
                   <a href={threadLink}>{item.story_title}</a>
                 </small>
               </p>
-              {/* <p>{htmlDecode(item.comment_text)}</p> */}
               <div>
                 {htmlDecode(item.comment_text).map((paragraph, ind) => (
-                  <p key={"p_" + ind}>{paragraph}</p>
+                  <p key={"commentP_" + ind}>{paragraph}</p>
                 ))}
               </div>
             </div>

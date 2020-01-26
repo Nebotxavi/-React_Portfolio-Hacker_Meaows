@@ -3,10 +3,11 @@
   --secondary-color: rgb(0, 0, 0);
   --background-color: #f6f6ef;
   --grey-borders-color: rgb(192, 191, 191);
+  --grey-font-color: #5c5c5c;
 }
 
 .App {
-  text-align: center;
+  /* text-align: center; */
   background-color: var(--background-color);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -113,34 +114,53 @@ small {
   padding-top: 0.5rem;
 }
 
-.filters .selectLabel {
-  margin-right: 7px;
+.dropdown-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-right: 0.6rem;
+  align-items: baseline;
+}
+
+.dropdown-header {
+  display: flex;
+  flex-direction: row;
+  border-width: thin;
+  border-style: solid;
+  border-color: var(--grey-borders-color);
+  color: grey;
+  padding: 0.2rem;
+}
+
+.dropdown-title {
+  font-size: 0.9rem;
+  margin-right: 0.2rem;
+}
+
+.dropdown-label {
+  margin-right: 0.4rem;
   font-size: 0.8rem;
 }
 
-.filters .selectBox {
-  border-style: solid;
+.dropdown-list {
+  position: absolute;
   border-width: thin;
+  border-style: solid;
   border-color: var(--grey-borders-color);
-}
-
-.filters .select-input {
-  -webkit-appearance: none;
-  border: none;
-  width: 38%;
-  color: grey;
-  cursor: pointer;
-}
-
-.filters .select-group-form {
+  background-color: white;
   text-align: left;
-  align-items: flex-start;
-  margin-right: -10px;
+  list-style-type: none;
+  list-style: none;
+  padding-left: 0;
+  margin-top: 2.5rem;
+  margin-left: 1rem;
+  color: grey;
+  font-size: 0.8rem;
 }
 
-div.select-group-form > span > svg {
-  color: grey;
-  padding-right: 10px;
+.dropdown-list li {
+  border-bottom: 1px solid var(--grey-borders-color);
+  padding: 0.5rem;
+  color: var(--grey-font-color);
 }
 
 /* Share */
@@ -149,6 +169,7 @@ div.select-group-form > span > svg {
   align-self: flex-end;
   margin-right: 1rem;
   margin-top: 0.5rem;
+  color: var(--grey-borders-color);
 }
 
 /* MAIN CONTENT */
@@ -255,20 +276,16 @@ li.page-item > button {
   border-bottom: 1px solid var(--grey-borders-color);
 }
 
-.settings .ranking-settings {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+.ranking-settings,
+.display-settings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  align-items: baseline;
+  color: var(--grey-font-color);
 }
 
-.settings .select-group-form {
-  display: flex;
-  justify-content: center;
-}
-
-.settings .selectLabel {
-  margin-right: 10px;
-}
-
-.settings .select-box {
+.ranking-settings .selectLabel,
+.display-settings .selectLabel {
+  justify-self: end;
 }

@@ -1,14 +1,15 @@
 import React from "react";
 
-const Select = ({ inputs, requireSvg = false }) => {
+const Select = ({ inputs }) => {
   const { name, label, value, options, onChangeAction } = inputs;
 
   return (
-    <div className="select-group-form">
+    <React.Fragment>
+      {/* <div className="select-group-form"> */}
       <label className="selectLabel" htmlFor={`input-${name}`}>
         {label || name}
       </label>
-      <span className="selectBox">
+      <div className="selectBox">
         <select
           id={`input-${name}`}
           name={name}
@@ -22,22 +23,9 @@ const Select = ({ inputs, requireSvg = false }) => {
             </option>
           ))}
         </select>
-        {requireSvg && (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="13"
-            height="13"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <polyline points="1 4 7 10 13 4"></polyline>
-          </svg>
-        )}
-      </span>
-    </div>
+      </div>
+    </React.Fragment>
+    // </div>
   );
 };
 

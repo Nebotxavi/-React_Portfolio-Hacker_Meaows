@@ -43,7 +43,7 @@ const Content = () => {
   return (
     <React.Fragment>
       <Filters />
-      <ContentItem items={items} />
+      <ContentItem items={items} query={query} />
       <Pagination pagesAmount={pagesAmount} />
     </React.Fragment>
   );

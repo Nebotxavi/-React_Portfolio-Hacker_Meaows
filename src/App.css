@@ -129,6 +129,7 @@ small {
   border-color: var(--grey-borders-color);
   color: grey;
   padding: 0.2rem;
+  cursor: pointer;
 }
 
 .dropdown-title {

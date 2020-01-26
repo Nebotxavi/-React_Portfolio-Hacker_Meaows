@@ -33,7 +33,7 @@ const Content = () => {
           setPagesAmount(contentData.nbPages);
         }
       } catch (ex) {
-        console.log("Fetching items error: ", ex);
+        alert(ex);
       }
     }
     fetchData();

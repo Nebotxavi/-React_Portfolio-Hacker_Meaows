@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 import Dropdown from "./common/dropdown";
-import Svg from "./common/svgItems";
+import ShareMenu from "./shareMenu";
 
 import { SettingsContext } from "../App";
 
@@ -54,7 +54,7 @@ const Filters = () => {
       </div>
 
       <div className="share-icon">
-        <Svg request={"shareIcon"} />
+        <ShareMenu />
       </div>
     </div>
   );

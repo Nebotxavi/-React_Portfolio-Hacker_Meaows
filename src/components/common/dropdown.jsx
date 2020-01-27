@@ -28,7 +28,10 @@ const Dropdown = ({ inputs }) => {
                 <li
                   className="dropdown-item"
                   key={ind}
-                  onClick={e => onChangeAction(e.currentTarget)}
+                  onClick={e => {
+                    onChangeAction(e.currentTarget);
+                    setShowOptions(false);
+                  }}
                 >
                   {option}
                 </li>

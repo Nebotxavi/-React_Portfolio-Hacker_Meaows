@@ -173,6 +173,12 @@ small {
   color: var(--grey-borders-color);
 }
 
+.share-list {
+  margin-left: -8rem;
+  margin-top: 1rem;
+  width: 150px;
+}
+
 /* MAIN CONTENT */
 
 .itemsList {

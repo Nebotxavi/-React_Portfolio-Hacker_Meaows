@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 
 import Dropdown from "./common/dropdown";
-import ShareMenu from "./shareMenu";
 
 import { SettingsContext } from "../App";
 
@@ -46,16 +45,10 @@ const Filters = () => {
   ];
 
   return (
-    <div className="filters-bar">
-      <div className="filters">
-        {inputs.map((input, ind) => (
-          <Dropdown inputs={input} key={ind} />
-        ))}
-      </div>
-
-      <div className="share-icon">
-        <ShareMenu />
-      </div>
+    <div className="filters">
+      {inputs.map((input, ind) => (
+        <Dropdown inputs={input} key={ind} />
+      ))}
     </div>
   );
 };

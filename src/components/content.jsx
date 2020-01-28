@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 
 import { escapeQuery } from "../utils/queryEscape";
-import Filters from "./filters";
+import FiltersBar from "./filtersBar";
 import { getContent } from "../services/contentService";
 import ContentItem from "./contentItem";
 import Pagination from "./common/pagination";
@@ -45,7 +45,7 @@ const Content = () => {
 
   return (
     <React.Fragment>
-      <Filters />
+      <FiltersBar />
       <ContentItem items={items} query={query} />
       <Pagination pagesAmount={pagesAmount} />
     </React.Fragment>

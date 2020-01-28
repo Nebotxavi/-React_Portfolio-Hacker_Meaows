@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 
+import { escapeQuery } from "../utils/queryEscape";
 import Filters from "./filters";
 import { getContent } from "../services/contentService";
 import ContentItem from "./contentItem";
@@ -18,6 +19,8 @@ const Content = () => {
 
   useEffect(() => {
     let shouldIgnore = false;
+    const escapedQuery = escapeQuery(query);
+
     async function fetchData() {
       try {
         const contentData = await getContent(
@@ -26,7 +29,7 @@ const Content = () => {
           searchForTime,
           currentPage,
           itemsPerPage,
-          query
+          escapedQuery
         );
         if (!shouldIgnore) {
           setItems([...contentData.hits]);

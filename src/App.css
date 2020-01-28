@@ -186,7 +186,6 @@ small {
 }
 
 .itemsList .content-item p {
-  margin-top: 0;
   margin-bottom: 0;
 }
 
@@ -202,6 +201,14 @@ small {
 .itemsList a {
   text-decoration: none;
   color: grey;
+}
+
+.content-comment {
+  font-size: 0.8rem;
+}
+
+.content-comment p {
+  margin-top: 0.5rem;
 }
 
 /* PAGINATION */

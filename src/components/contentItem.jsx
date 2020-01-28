@@ -8,7 +8,6 @@ const linkEndpoint = "https://news.ycombinator.com/";
 const itemEndpoint = linkEndpoint + "item?id=";
 
 const ContentItem = ({ items, query }) => {
-  console.log(items);
   return (
     <div className="itemsList">
       {items.map(item => {
@@ -68,7 +67,7 @@ const ContentItem = ({ items, query }) => {
                   <a href={threadLink}>{item.story_title}</a>
                 </small>
               </p>
-              <div>
+              <div className="content-comment">
                 {htmlDecode(item.comment_text).map((paragraph, ind) => (
                   <p key={"commentP_" + ind}>
                     {getHighlightedText(paragraph, query)}

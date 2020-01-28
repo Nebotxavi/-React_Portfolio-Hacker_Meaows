@@ -26,7 +26,7 @@ const Dropdown = ({ inputs }) => {
             {options.map((option, ind) => {
               return (
                 <li
-                  className="dropdown-item"
+                  className="dropdown-item clickable"
                   key={ind}
                   onClick={e => {
                     onChangeAction(e.currentTarget);

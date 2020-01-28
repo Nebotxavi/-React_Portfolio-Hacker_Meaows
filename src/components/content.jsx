@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 
-import Filters from "./filters";
+import { escapeQuery } from "../utils/queryEscape";
+import FiltersBar from "./filtersBar";
 import { getContent } from "../services/contentService";
 import ContentItem from "./contentItem";
 import Pagination from "./common/pagination";
@@ -18,6 +19,8 @@ const Content = () => {
 
   useEffect(() => {
     let shouldIgnore = false;
+    const escapedQuery = escapeQuery(query);
+
     async function fetchData() {
       try {
         const contentData = await getContent(
@@ -26,7 +29,7 @@ const Content = () => {
           searchForTime,
           currentPage,
           itemsPerPage,
-          query
+          escapedQuery
         );
         if (!shouldIgnore) {
           setItems([...contentData.hits]);
@@ -42,8 +45,8 @@ const Content = () => {
 
   return (
     <React.Fragment>
-      <Filters />
-      <ContentItem items={items} />
+      <FiltersBar />
+      <ContentItem items={items} query={query} />
       <Pagination pagesAmount={pagesAmount} />
     </React.Fragment>
   );

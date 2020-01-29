@@ -1,11 +1,10 @@
 import React from "react";
 
-const Select = ({ inputs }) => {
+const Select = ({ inputs, setIsModified }) => {
   const { name, label, value, options, onChangeAction } = inputs;
 
   return (
     <React.Fragment>
-      {/* <div className="select-group-form"> */}
       <label className="selectLabel" htmlFor={`input-${name}`}>
         {label || name}
       </label>
@@ -14,7 +13,10 @@ const Select = ({ inputs }) => {
           id={`input-${name}`}
           name={name}
           className="select-input"
-          onChange={e => onChangeAction(e.currentTarget)}
+          onChange={e => {
+            onChangeAction(e.currentTarget);
+            setIsModified(true);
+          }}
           value={value}
         >
           {options.map(option => (

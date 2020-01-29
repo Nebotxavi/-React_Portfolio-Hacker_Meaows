@@ -1,7 +1,5 @@
 import React, { useState, useContext } from "react";
-
 import Select from "./common/select";
-
 import { SettingsContext } from "../App";
 
 const Settings = () => {
@@ -13,11 +11,21 @@ const Settings = () => {
     searchForTime
   } = useContext(SettingsContext);
 
-  const [settingsSearchBy, setSettingsSearchBy] = useState(searchBy);
-  const [settingsSearchType, setSettingsSearchType] = useState(searchType);
-  const [settingsSearchForTime, setSettingsSearchForTime] = useState(
-    searchForTime
+  // Initial values based on the localStorage OR the values from the content view filters
+  const { defaultType, defaultSort, defaultDateRange } =
+    JSON.parse(localStorage.getItem("HACKER MEOWS")) || {};
+
+  const [settingsSearchBy, setSettingsSearchBy] = useState(
+    defaultSort || searchBy
   );
+  const [settingsSearchType, setSettingsSearchType] = useState(
+    defaultType || searchType
+  );
+  const [settingsSearchForTime, setSettingsSearchForTime] = useState(
+    defaultDateRange || searchForTime
+  );
+
+  const [isModified, setIsModified] = useState(false);
 
   const displayInputs = [
     {
@@ -27,7 +35,6 @@ const Settings = () => {
       options: [10, 20, 30, 50],
       onChangeAction: target => {
         setItemsPerPage(target.value);
-        setLocalStorage(target);
       }
     }
   ];
@@ -40,7 +47,6 @@ const Settings = () => {
       options: ["All", "Stories", "Comments"],
       onChangeAction: target => {
         setSettingsSearchType(target.value);
-        setLocalStorage(target);
       }
     },
     {
@@ -50,7 +56,6 @@ const Settings = () => {
       options: ["Date", "Popularity"],
       onChangeAction: target => {
         setSettingsSearchBy(target.value);
-        setLocalStorage(target);
       }
     },
     {
@@ -60,24 +65,25 @@ const Settings = () => {
       options: ["All time", "Last 24h", "Past Week", "Past Month", "Past Year"],
       onChangeAction: target => {
         setSettingsSearchForTime(target.value);
-        setLocalStorage(target);
       }
     }
   ];
 
-  function setLocalStorage(target) {
-    const currentStorage = JSON.parse(localStorage.getItem("HACKER MEOWS"));
-    const newItem = { [target.name]: target.value };
-    const updatedStorage = currentStorage
-      ? { ...currentStorage, ...newItem }
-      : newItem;
-    localStorage.setItem("HACKER MEOWS", JSON.stringify(updatedStorage));
+  function setLocalStorage(e) {
+    e.preventDefault();
+    const newLocalStorage = {
+      hitsPerPage: itemsPerPage,
+      defaultType: settingsSearchType,
+      defaultSort: settingsSearchBy,
+      defaultDateRange: settingsSearchForTime
+    };
+    localStorage.setItem("HACKER MEOWS", JSON.stringify(newLocalStorage));
   }
 
   return (
     <div className="settings">
       <p>Settings</p>
-      <form>
+      <form onSubmit={setLocalStorage}>
         <div className="display-box">
           <h2>Display options</h2>
           <div className="display-settings">
@@ -89,9 +95,16 @@ const Settings = () => {
             <h2>Ranking options</h2>
             <div className="ranking-settings">
               {rankingInputs.map((input, ind) => (
-                <Select inputs={input} key={ind} />
+                <Select
+                  inputs={input}
+                  key={ind}
+                  setIsModified={setIsModified}
+                />
               ))}
             </div>
+          </div>
+          <div className="settings-button">
+            <button disabled={!isModified}>Submit</button>
           </div>
         </div>
       </form>

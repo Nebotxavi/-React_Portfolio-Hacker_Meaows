@@ -19,7 +19,7 @@ const ContentItem = ({ items, query }) => {
         if (item._tags[0] === "story")
           return (
             <div className="content-item" key={item.objectID}>
-              <p>
+              <p className="content-story">
                 <a href={contentLink}>
                   {getHighlightedText(item.title, query)}
                 </a>
@@ -29,7 +29,7 @@ const ContentItem = ({ items, query }) => {
                   </a>
                 </small>
               </p>
-              <p>
+              <p className="content-story">
                 <small>
                   <a href={contentLink}>{item.points} points</a> |{" "}
                   <a href={authorLink}>

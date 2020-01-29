@@ -105,6 +105,7 @@ small {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
 .filters {
@@ -189,6 +190,11 @@ small {
 
 .itemsList .content-item {
   margin-top: 0.5rem;
+}
+
+.content-story {
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 .itemsList .content-item p {

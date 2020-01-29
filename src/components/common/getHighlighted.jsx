@@ -1,6 +1,8 @@
 import React from "react";
 
 const getHighlightedText = (item, query) => {
+  if (!query) return item;
+
   const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const parts = item.split(new RegExp(`(\\b${escapedQuery})`, "gi")); // (?<!\\w)
   return (

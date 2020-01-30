@@ -98,7 +98,9 @@ const Settings = ({ history }) => {
             />
           </div>
           <div className="settings-button">
-            <button disabled={!isModified}>Submit</button>
+            <button className="clickable" disabled={!isModified}>
+              Apply
+            </button>
           </div>
         </div>
       </form>

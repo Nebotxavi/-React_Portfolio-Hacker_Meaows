@@ -40,8 +40,6 @@ export async function getContent(
 
   endpoint += query ? queryEndpoint + query.toLowerCase() : "";
 
-  console.log("endpoint", endpoint);
-
   const { data: newsData } = await http.get(endpoint);
   return newsData;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const FootBar = () => {
   return (
@@ -8,7 +9,7 @@ const FootBar = () => {
           <a href="https://hn.algolia.com/about">About</a>
         </li>
         <li>
-          <a href="https://hn.algolia.com/settings">Setting</a>
+          <Link to="/settings">Setting</Link>
         </li>
         <li>
           <a href="https://hn.algolia.com/help">Help</a>

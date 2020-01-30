@@ -1,8 +1,9 @@
 import React, { useState, useContext } from "react";
-import Select from "./common/select";
+import DisplayOptions from "./displayOptions";
+import RankingOptions from "./rankingOptions";
 import { SettingsContext } from "../App";
 
-const Settings = () => {
+const Settings = ({ history }) => {
   const {
     itemsPerPage,
     setItemsPerPage,
@@ -78,6 +79,7 @@ const Settings = () => {
       defaultDateRange: settingsSearchForTime
     };
     localStorage.setItem("HACKER MEOWS", JSON.stringify(newLocalStorage));
+    history.push("/");
   }
 
   return (
@@ -85,23 +87,15 @@ const Settings = () => {
       <p>Settings</p>
       <form onSubmit={setLocalStorage}>
         <div className="display-box">
-          <h2>Display options</h2>
-          <div className="display-settings">
-            {displayInputs.map((input, ind) => (
-              <Select inputs={input} key={ind} />
-            ))}
-          </div>
+          <DisplayOptions
+            displayInputs={displayInputs}
+            setIsModified={setIsModified}
+          />
           <div className="ranking-box">
-            <h2>Ranking options</h2>
-            <div className="ranking-settings">
-              {rankingInputs.map((input, ind) => (
-                <Select
-                  inputs={input}
-                  key={ind}
-                  setIsModified={setIsModified}
-                />
-              ))}
-            </div>
+            <RankingOptions
+              rankingInputs={rankingInputs}
+              setIsModified={setIsModified}
+            />
           </div>
           <div className="settings-button">
             <button disabled={!isModified}>Submit</button>

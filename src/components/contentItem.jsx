@@ -13,6 +13,7 @@ const ContentItem = ({ items, query }) => {
           return (
             <StoryContent
               item={item}
+              key={item.objectID}
               query={query}
               linkEndpoint={linkEndpoint}
             />
@@ -21,6 +22,7 @@ const ContentItem = ({ items, query }) => {
           return (
             <CommentContent
               item={item}
+              key={item.objectID}
               query={query}
               linkEndpoint={linkEndpoint}
             />

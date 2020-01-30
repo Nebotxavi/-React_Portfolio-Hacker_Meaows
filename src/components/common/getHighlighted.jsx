@@ -4,7 +4,7 @@ const getHighlightedText = (item, query) => {
   if (!query) return item;
 
   const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const parts = item.split(new RegExp(`(\\b${escapedQuery})`, "gi")); // (?<!\\w)
+  const parts = item.split(new RegExp(`(\\b${escapedQuery})`, "gi"));
   return (
     <React.Fragment>
       {parts.map((part, ind) => (
